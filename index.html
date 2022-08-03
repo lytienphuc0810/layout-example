@@ -62,9 +62,9 @@
     <h2>display: inline-block</h2>
     <div>
       This is a text with a
-      <div class="d-inline-block">
-        <div class="bg-info">BLOCK</div>
-        <div class="bg-warning">BLOCK</div>
+      <div class="d-inline-block"> 
+        <div class="bg-info">BLOCK</div> 
+        <div class="bg-warning">BLOCK</div> 
       </div>
       inside
     </div>
@@ -106,7 +106,7 @@
     <h2>position: absolute</h2>
     <div class="border border-warning">
       <div class="position-relative border border-info relative-container-example-block">
-        <div class="position-absolute bg-secondary absolute-example-block">relative position, its position is relative to nearest parent with `position:relative` or body tag</div>
+        <div class="position-absolute bg-secondary absolute-example-block">relative position, its position is relative to nearest parent with non-static position or body tag</div>
       </div>
     </div>
   </div>
@@ -129,8 +129,24 @@
     </div>
     <h2>combined transform</h2>
     <div class="d-flex justify-content-around">
-      <div class="border border-warning sq-50"><div class="bg-info sq-50 ex-combine">EXP</div></div>
+      <div class="border border-warning sq-50"><div class="bg-info sq-50 ex-combine" id="square">EXP</div></div>
     </div>
   </div>
+  <hr class="pt-6"/>
+
+  <script type="text/javascript">
+    let i = 0;
+    let clicked  = false;
+
+    setInterval(()=>{
+      if(clicked) {
+        let ndeg = 10 * i;
+        document.getElementById('square').style.transform =  `translate(50px, 50px) rotate(${ndeg}deg) scale(1.75)`;
+        i = ++i % 36;
+      }
+    }, 100)
+
+    document.getElementById('square').onclick = () => {clicked=!clicked}
+  </script>
 </body>
 </html>
